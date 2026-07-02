@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { ArrowRight, TrendingUp, Users, Globe, Briefcase } from 'lucide-react'
 import { useLang } from '../context/LangContext'
-import Logo from '../../dist/assets/logo.png';
 
 const stats = [
   { icon: <TrendingUp size={20} />, value: '2022', label: { en: 'Founded', ar: 'تأسست' } },
@@ -164,7 +163,7 @@ export default function Hero() {
               position: 'relative',
             }}>
               <img
-                src={Logo}
+                src="/logo.png"
                 alt="Bahr Al Sahara Logo"
                 style={{ width: '100%', height: 420, objectFit: 'contain', display: 'block', padding: '24px', backgroundColor: 'rgba(255, 255, 255, 0.9)' }}
               />
