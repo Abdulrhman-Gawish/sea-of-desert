@@ -1,30 +1,25 @@
+import { Routes, Route } from 'react-router-dom'
 import { LangProvider } from './context/LangContext'
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import About from './components/About'
-import Services from './components/Services'
-import Products from './components/Products'
-import Partners from './components/Partners'
-import WhyUs from './components/WhyUs'
-import Vision2030 from './components/Vision2030'
-import Stats from './components/Stats'
-import Contact from './components/Contact'
 import Footer from './components/Footer'
 import FloatingCTA from './components/FloatingCTA'
+import ScrollToTop from './components/ScrollToTop'
+
+// Pages
+import HomePage from './pages/HomePage'
+import BusinessSolutionsPage from './pages/BusinessSolutionsPage'
+import SupplyChainPage from './pages/SupplyChainPage'
 
 export default function App() {
   return (
     <LangProvider>
+      <ScrollToTop />
       <Navbar />
-      <Hero />
-      <About />
-      <Services />
-      <Products />
-      <Partners />
-      <WhyUs />
-      <Vision2030 />
-      <Stats />
-      <Contact />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/business-solutions" element={<BusinessSolutionsPage />} />
+        <Route path="/supply-chain" element={<SupplyChainPage />} />
+      </Routes>
       <Footer />
       <FloatingCTA />
     </LangProvider>

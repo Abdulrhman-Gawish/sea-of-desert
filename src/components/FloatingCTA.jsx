@@ -3,7 +3,7 @@ import { MessageCircle, X } from 'lucide-react'
 import { useLang } from '../context/LangContext'
 
 export default function FloatingCTA() {
-  const { t, lang } = useLang()
+  const { t, lang, dir } = useLang()
   const [show, setShow] = useState(false)
   const [expanded, setExpanded] = useState(false)
 
@@ -18,31 +18,45 @@ export default function FloatingCTA() {
     <div style={{
       position: 'fixed',
       bottom: 32,
-      right: 32,
+      right: dir === 'rtl' ? 'auto' : 32,
+      left: dir === 'rtl' ? 32 : 'auto',
       zIndex: 999,
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'flex-end',
+      alignItems: dir === 'rtl' ? 'flex-start' : 'flex-end',
       gap: 12,
     }}>
       {expanded && (
         <div className="glass-white" style={{
           borderRadius: 16,
           padding: 20,
-          boxShadow: '0 8px 30px rgba(10,22,40,0.15)',
-          maxWidth: 220,
+          boxShadow: 'var(--shadow-lg)',
+          maxWidth: 240,
           animation: 'fadeUp 0.3s ease forwards',
         }}>
           <p style={{ fontSize: 14, color: 'var(--navy)', fontWeight: 600, marginBottom: 12, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
-            {t('Ready to grow globally?', 'مستعد للنمو عالمياً؟')}
+            {t('Ready to grow globally?', 'Ready to grow globally?', 'مستعد للنمو عالمياً؟')}
           </p>
           <a
-            href="#contact"
+            href="https://wa.me/966500000000"
+            target="_blank"
+            rel="noreferrer"
             onClick={() => setExpanded(false)}
-            className="btn-primary"
-            style={{ textDecoration: 'none', fontSize: 13, padding: '9px 18px', width: '100%', justifyContent: 'center', fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}
+            style={{
+              background: '#25d366',
+              color: 'white',
+              textDecoration: 'none',
+              fontSize: 14,
+              padding: '10px 18px',
+              borderRadius: 8,
+              display: 'flex',
+              justifyContent: 'center',
+              fontWeight: 600,
+              fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins',
+              boxShadow: '0 4px 12px rgba(37,211,102,0.3)',
+            }}
           >
-            {t("Let's Talk", 'تحدث معنا')}
+            {t("Let's Talk", "Let's Talk", 'تحدث معنا')}
           </a>
         </div>
       )}
@@ -60,15 +74,15 @@ export default function FloatingCTA() {
           justifyContent: 'center',
           color: 'white',
           cursor: 'pointer',
-          boxShadow: '0 4px 20px rgba(37,211,102,0.4)',
+          boxShadow: '0 8px 24px rgba(37,211,102,0.4)',
           transition: 'transform 0.2s',
-          animation: 'float 3s ease-in-out infinite',
+          animation: expanded ? 'none' : 'float 3s ease-in-out infinite',
         }}
-        onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.1)')}
+        onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.05)')}
         onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
         aria-label="WhatsApp"
       >
-        {expanded ? <X size={22} /> : <MessageCircle size={22} />}
+        {expanded ? <X size={24} /> : <MessageCircle size={24} />}
       </button>
     </div>
   )

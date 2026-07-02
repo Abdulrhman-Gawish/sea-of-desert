@@ -1,30 +1,35 @@
+import { Link } from 'react-router-dom'
 import { useLang } from '../context/LangContext'
-import { Globe, ArrowUp } from 'lucide-react'
+import { ArrowUp } from 'lucide-react'
 
 export default function Footer() {
-  const { t, toggleLang, lang, dir } = useLang()
+  const { t, lang, dir } = useLang()
 
   const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
   const links = {
     company: [
-      { en: 'About Us', ar: 'من نحن', href: '#about' },
-      { en: 'Our Services', ar: 'خدماتنا', href: '#services' },
-      { en: 'Products', ar: 'منتجاتنا', href: '#products' },
-      { en: 'Partners', ar: 'شركاؤنا', href: '#partners' },
-      { en: 'Vision 2030', ar: 'رؤية 2030', href: '#vision' },
+      { label: 'nav_about', to: '/#about' },
+      { label: 'nav_business', to: '/business-solutions' },
+      { label: 'nav_supply', to: '/supply-chain' },
+      { label: 'nav_contact', to: '#contact' },
     ],
     services: [
-      { en: 'International Trade', ar: 'التجارة الدولية', href: '#services' },
-      { en: 'Logistics & Shipping', ar: 'اللوجستيات والشحن', href: '#services' },
-      { en: 'Technology Solutions', ar: 'الحلول التقنية', href: '#services' },
-      { en: 'Digital Marketing', ar: 'التسويق الرقمي', href: '#services' },
-      { en: 'Medical Products', ar: 'المنتجات الطبية', href: '#services' },
+      { label: 'srv_trade_title', to: '/supply-chain' },
+      { label: 'srv_logistics_title', to: '/supply-chain' },
+      { label: 'srv_tech_title', to: '/business-solutions' },
+      { label: 'srv_marketing_title', to: '/business-solutions' },
+      { label: 'srv_medical_title', to: '/supply-chain' },
     ],
   }
 
+  const getHref = (to) => {
+    if (to.startsWith('#')) return `/${to}`
+    return to
+  }
+
   return (
-    <footer dir={dir} style={{ background: '#060e1c', color: 'rgba(255,255,255,0.7)', position: 'relative', overflow: 'hidden' }}>
+    <footer dir={dir} style={{ background: '#0a1628', color: 'rgba(255,255,255,0.7)', position: 'relative', overflow: 'hidden' }}>
       {/* Top decoration */}
       <div style={{ height: 4, background: 'linear-gradient(90deg, var(--royal), var(--green), var(--gold))' }} />
 
@@ -33,97 +38,104 @@ export default function Footer() {
         onClick={scrollTop}
         style={{
           position: 'absolute',
-          top: 24,
-          right: dir === 'rtl' ? 'auto' : 24,
-          left: dir === 'rtl' ? 24 : 'auto',
-          width: 44,
-          height: 44,
+          top: 32,
+          right: dir === 'rtl' ? 'auto' : 32,
+          left: dir === 'rtl' ? 32 : 'auto',
+          width: 48,
+          height: 48,
           borderRadius: '50%',
-          background: 'rgba(255,255,255,0.08)',
-          border: '1px solid rgba(255,255,255,0.15)',
+          background: 'rgba(255,255,255,0.05)',
+          border: '1px solid rgba(255,255,255,0.1)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           color: 'white',
           cursor: 'pointer',
-          transition: 'all 0.2s',
+          transition: 'all 0.3s',
         }}
-        onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.15)')}
-        onMouseLeave={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.08)')}
+        onMouseEnter={e => (e.currentTarget.style.background = 'var(--royal)')}
+        onMouseLeave={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.05)')}
       >
-        <ArrowUp size={18} />
+        <ArrowUp size={20} />
       </button>
 
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '60px 24px 0' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 48, marginBottom: 48 }}
+      <div className="container" style={{ paddingTop: 80, paddingBottom: 24 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 48, marginBottom: 64 }}
           className="footer-grid">
           {/* Brand */}
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
               <div style={{
-                width: 44,
-                height: 44,
-                borderRadius: 10,
-                background: 'linear-gradient(135deg, #1a4fa0, #c9a227)',
+                background: 'white',
+                padding: '8px 12px',
+                borderRadius: '8px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontSize: 16,
-                fontWeight: 800,
-                color: 'white',
-                fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                border: '1px solid rgba(255,255,255,0.2)'
               }}>
-                {lang === 'ar' ? 'بح' : 'SD'}
+                <picture>
+                  <source srcSet="/1.png" media="(max-width: 768px)" />
+                  <img 
+                    src="/3.png" 
+                    alt="Sea of Desert Logo" 
+                    style={{ 
+                      height: 36, 
+                      width: 'auto',
+                      objectFit: 'contain',
+                    }} 
+                  />
+                </picture>
               </div>
               <div>
-                <div style={{ color: 'white', fontWeight: 700, fontSize: 16, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
-                  {t('Sea of Desert', 'بحر الصحراء')}
+                <div style={{ color: 'white', fontWeight: 800, fontSize: 18, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
+                  {lang === 'en' ? 'Sea of Desert' : 'بحر الصحراء'}
                 </div>
-                <div style={{ color: 'rgba(201,162,39,0.8)', fontSize: 11, fontWeight: 500 }}>
-                  {t('International Trade & Solutions', 'حلول التجارة الدولية')}
+                <div style={{ color: 'var(--gold)', fontSize: 11, fontWeight: 600 }}>
+                  {t('stat_sectors')}
                 </div>
               </div>
             </div>
-            <p style={{ fontSize: 14, lineHeight: 1.8, maxWidth: 300, marginBottom: 24, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
-              {t(
-                'Connecting local vision to global opportunities through integrated trade, logistics, technology, and healthcare solutions.',
-                'نربط الرؤية المحلية بالفرص العالمية من خلال حلول متكاملة في التجارة واللوجستيات والتكنولوجيا والرعاية الصحية.'
-              )}
+            <p style={{ fontSize: 14, lineHeight: 1.8, maxWidth: 320, marginBottom: 32, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins', color: 'rgba(255,255,255,0.6)' }}>
+              {t('hero_desc')}
             </p>
             {/* Social */}
-            <div style={{ display: 'flex', gap: 10 }}>
+            <div style={{ display: 'flex', gap: 12 }}>
               {[
-                { icon: 'in', label: 'LinkedIn' },
-                { icon: 'tw', label: 'Twitter' },
-                { icon: 'ig', label: 'Instagram' },
+                { icon: 'in', label: 'LinkedIn', color: '#0a66c2' },
+                { icon: 'tw', label: 'Twitter', color: '#1da1f2' },
+                { icon: 'ig', label: 'Instagram', color: '#e1306c' },
               ].map((s, i) => (
                 <a
                   key={i}
                   href="#"
                   aria-label={s.label}
                   style={{
-                    width: 38,
-                    height: 38,
-                    borderRadius: 10,
-                    background: 'rgba(255,255,255,0.07)',
+                    width: 40,
+                    height: 40,
+                    borderRadius: 12,
+                    background: 'rgba(255,255,255,0.05)',
                     border: '1px solid rgba(255,255,255,0.1)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: 'rgba(255,255,255,0.7)',
+                    color: 'rgba(255,255,255,0.8)',
                     textDecoration: 'none',
-                    transition: 'all 0.2s',
+                    transition: 'all 0.3s',
                   }}
                   onMouseEnter={e => {
-                    (e.currentTarget).style.background = 'rgba(26,79,160,0.4)'
-                    ;(e.currentTarget).style.color = 'white'
+                    e.currentTarget.style.background = s.color
+                    e.currentTarget.style.color = 'white'
+                    e.currentTarget.style.borderColor = s.color
                   }}
                   onMouseLeave={e => {
-                    (e.currentTarget).style.background = 'rgba(255,255,255,0.07)'
-                    ;(e.currentTarget).style.color = 'rgba(255,255,255,0.7)'
+                    e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
+                    e.currentTarget.style.color = 'rgba(255,255,255,0.8)'
+                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'
                   }}
                 >
-                  <span style={{ fontSize: 11, fontWeight: 700 }}>{s.icon}</span>
+                  <span style={{ fontSize: 12, fontWeight: 700 }}>{s.icon}</span>
                 </a>
               ))}
             </div>
@@ -131,76 +143,58 @@ export default function Footer() {
 
           {/* Company Links */}
           <div>
-            <h4 style={{ color: 'white', fontWeight: 700, fontSize: 15, marginBottom: 20, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
-              {t('Company', 'الشركة')}
+            <h4 style={{ color: 'white', fontWeight: 700, fontSize: 16, marginBottom: 24, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
+              {t('company')}
             </h4>
-            {links.company.map((l, i) => (
-              <a key={i} href={l.href} style={{ display: 'block', color: 'rgba(255,255,255,0.55)', textDecoration: 'none', fontSize: 14, marginBottom: 10, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins', transition: 'color 0.2s' }}
-                onMouseEnter={e => (e.currentTarget.style.color = 'white')}
-                onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.55)')}>
-                {t(l.en, l.ar)}
-              </a>
-            ))}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+              {links.company.map((l, i) => (
+                <a key={i} href={getHref(l.to)} style={{ color: 'rgba(255,255,255,0.55)', textDecoration: 'none', fontSize: 14, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins', transition: 'color 0.2s' }}
+                  onMouseEnter={e => (e.currentTarget.style.color = 'var(--gold)')}
+                  onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.55)')}>
+                  {t(l.label)}
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Services Links */}
           <div>
-            <h4 style={{ color: 'white', fontWeight: 700, fontSize: 15, marginBottom: 20, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
-              {t('Services', 'الخدمات')}
+            <h4 style={{ color: 'white', fontWeight: 700, fontSize: 16, marginBottom: 24, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
+              {t('services')}
             </h4>
-            {links.services.map((l, i) => (
-              <a key={i} href={l.href} style={{ display: 'block', color: 'rgba(255,255,255,0.55)', textDecoration: 'none', fontSize: 14, marginBottom: 10, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins', transition: 'color 0.2s' }}
-                onMouseEnter={e => (e.currentTarget.style.color = 'white')}
-                onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.55)')}>
-                {t(l.en, l.ar)}
-              </a>
-            ))}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+              {links.services.map((l, i) => (
+                <Link key={i} to={l.to} style={{ color: 'rgba(255,255,255,0.55)', textDecoration: 'none', fontSize: 14, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins', transition: 'color 0.2s' }}
+                  onMouseEnter={e => (e.currentTarget.style.color = 'var(--gold)')}
+                  onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.55)')}>
+                  {t(l.label)}
+                </Link>
+              ))}
+            </div>
           </div>
 
-          {/* Language + Contact */}
+          {/* Contact CTA */}
           <div>
-            <h4 style={{ color: 'white', fontWeight: 700, fontSize: 15, marginBottom: 20, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
-              {t('Language', 'اللغة')}
+            <h4 style={{ color: 'white', fontWeight: 700, fontSize: 16, marginBottom: 24, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
+              {t('nav_contact')}
             </h4>
-            <button
-              onClick={toggleLang}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 8,
-                background: 'rgba(255,255,255,0.07)',
-                border: '1px solid rgba(255,255,255,0.12)',
-                color: 'white',
-                padding: '10px 18px',
-                borderRadius: 10,
-                cursor: 'pointer',
-                fontSize: 14,
-                fontWeight: 600,
-                fontFamily: 'Poppins',
-                marginBottom: 24,
-              }}
-            >
-              <Globe size={15} />
-              {lang === 'en' ? 'العربية' : 'English'}
-            </button>
-
-            <a href="#contact" className="btn-gold" style={{ textDecoration: 'none', fontSize: 14, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
-              {t('Contact Us', 'اتصل بنا')}
+            <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: 13, lineHeight: 1.6, marginBottom: 20, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
+              {t('contact_subtitle')}
+            </p>
+            <a href="/#contact" className="btn-gold" style={{ fontSize: 14, padding: '10px 24px', fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
+              {t('btn_contact')}
             </a>
           </div>
         </div>
 
         {/* Bottom bar */}
-        <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', padding: '24px 0', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
-          <div style={{ fontSize: 13, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
-            {t(
-              '© 2025 Sea of Desert. All rights reserved.',
-              '© 2025 شركة بحر الصحراء. جميع الحقوق محفوظة.'
-            )}
+        <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: 32, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
+          <div style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
+            {t('copyright')}
           </div>
-          <div style={{ display: 'flex', gap: 8 }}>
+          <div style={{ display: 'flex', gap: 12 }}>
             {['🇸🇦', '🇨🇳', '🇹🇷', '🇪🇬'].map((f, i) => (
-              <span key={i} style={{ fontSize: 18 }}>{f}</span>
+              <span key={i} style={{ fontSize: 20 }}>{f}</span>
             ))}
           </div>
         </div>

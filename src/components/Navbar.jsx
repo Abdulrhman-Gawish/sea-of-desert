@@ -1,190 +1,222 @@
 import { useState, useEffect } from 'react'
-import { Menu, X, Globe, ChevronRight } from 'lucide-react'
+import { Link, useLocation } from 'react-router-dom'
+import { Menu, X, Globe } from 'lucide-react'
 import { useLang } from '../context/LangContext'
-
-const navItems = [
-  { en: 'Home', ar: 'الرئيسية', href: '#home' },
-  { en: 'About', ar: 'من نحن', href: '#about' },
-  { en: 'Services', ar: 'خدماتنا', href: '#services' },
-  { en: 'Products', ar: 'منتجاتنا', href: '#products' },
-  { en: 'Partners', ar: 'شركاؤنا', href: '#partners' },
-  { en: 'Vision', ar: 'رؤية 2030', href: '#vision' },
-  { en: 'Contact', ar: 'اتصل بنا', href: '#contact' },
-]
+import { translations } from '../data/translations'
 
 export default function Navbar() {
-  const { lang, toggleLang, t, dir } = useLang()
+  const { lang, toggleLang, dir } = useLang()
+  const { pathname, hash } = useLocation()
   const [scrolled, setScrolled] = useState(false)
-  const [open, setOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  // t helper
+  const t = (key) => {
+    return translations[key]?.[lang] || key
+  }
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 40)
-    window.addEventListener('scroll', handler)
-    return () => window.removeEventListener('scroll', handler)
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Close menu on navigation
+  useEffect(() => {
+    setMenuOpen(false)
+  }, [pathname, hash])
+
+  const links = [
+    { label: 'nav_home', to: '/' },
+    { label: 'nav_about', to: '/#about' },
+    { label: 'nav_business', to: '/business-solutions' },
+    { label: 'nav_supply', to: '/supply-chain' },
+    { label: 'nav_contact', to: '#contact' },
+  ]
+
+  // Some links are hashes on home, but if we are on a different page, they should navigate to /#hash
+  // The 'to' field defines it. But for contact, maybe it's everywhere? Let's just use /#contact for consistency
+  const getHref = (to) => {
+    if (to.startsWith('#')) return pathname === '/' ? to : `/${to}`
+    if (to.startsWith('/#')) return to
+    return to
+  }
+
+  const isHome = pathname === '/'
+  const isDarkBg = isHome && !scrolled && !menuOpen
+  
   return (
-    <nav
-      dir={dir}
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 1000,
-        transition: 'all 0.4s ease',
-        background: scrolled
-          ? 'rgba(10,22,40,0.96)'
-          : 'transparent',
-        backdropFilter: scrolled ? 'blur(20px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.08)' : 'none',
-        boxShadow: scrolled ? '0 4px 30px rgba(0,0,0,0.3)' : 'none',
-      }}
-    >
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 72 }}>
+    <>
+      <nav 
+        dir={dir}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 100,
+          transition: 'all 0.4s ease',
+          backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.97)' : (menuOpen ? '#fff' : 'transparent'),
+          backdropFilter: scrolled ? 'blur(20px)' : 'none',
+          WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
+          boxShadow: scrolled ? '0 1px 12px rgba(10,22,40,0.06)' : 'none',
+          borderBottom: scrolled ? '1px solid rgba(0,0,0,0.04)' : '1px solid transparent'
+        }}
+      >
+        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: scrolled ? '64px' : '80px', transition: 'height 0.4s ease' }}>
           {/* Logo */}
-          <a href="#home" style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
+          <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', flexShrink: 0 }}>
             <div style={{
-              width: 44,
-              height: 44,
-              borderRadius: 10,
-              background: 'linear-gradient(135deg, #1a4fa0, #c9a227)',
+              background: 'white',
+              padding: '8px 12px',
+              borderRadius: '12px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: 18,
-              fontWeight: 800,
-              color: 'white',
-              fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins',
-              flexShrink: 0,
+              boxShadow: scrolled ? 'none' : '0 4px 12px rgba(0,0,0,0.1)',
+              transition: 'all 0.3s ease',
+              border: scrolled ? 'none' : '1px solid rgba(255,255,255,0.2)'
             }}>
-              {lang === 'ar' ? 'بح' : 'SD'}
+              <picture>
+                <source srcSet="/1.png" media="(max-width: 768px)" />
+                <img 
+                  src="/3.png" 
+                  alt="Sea of Desert" 
+                  style={{ 
+                    height: scrolled ? 40 : 48, 
+                    width: 'auto',
+                    maxWidth: 180,
+                    objectFit: 'contain',
+                    transition: 'all 0.3s ease',
+                  }} 
+                />
+              </picture>
             </div>
-            <div>
-              <div style={{ color: 'white', fontWeight: 700, fontSize: 16, lineHeight: 1.2, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
-                {t('Sea of Desert', 'بحر الصحراء')}
-              </div>
-              <div style={{ color: 'rgba(201,162,39,0.9)', fontSize: 11, fontWeight: 500, letterSpacing: '0.05em' }}>
-                {t('International Trade & Solutions', 'حلول التجارة الدولية')}
-              </div>
-            </div>
-          </a>
+          </Link>
 
-          {/* Desktop Nav */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 4 }} className="hidden-mobile">
-            {navItems.map(item => (
-              <a
-                key={item.en}
-                href={item.href}
-                style={{
-                  color: 'rgba(255,255,255,0.85)',
+          {/* Desktop Links */}
+          <div className="desktop-links" style={{ display: 'none', alignItems: 'center', gap: 28 }}>
+            {links.map((link, i) => (
+              <a 
+                key={i} 
+                href={getHref(link.to)} 
+                style={{ 
+                  color: isDarkBg ? 'rgba(255,255,255,0.85)' : 'var(--text-body)',
                   textDecoration: 'none',
                   fontSize: 14,
                   fontWeight: 500,
-                  padding: '8px 14px',
-                  borderRadius: 6,
-                  transition: 'all 0.2s',
-                  fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins',
+                  transition: 'color 0.2s',
+                  whiteSpace: 'nowrap',
                 }}
-                onMouseEnter={e => {
-                  (e.target).style.color = 'white'
-                  ;(e.target).style.background = 'rgba(255,255,255,0.08)'
-                }}
-                onMouseLeave={e => {
-                  (e.target).style.color = 'rgba(255,255,255,0.85)'
-                  ;(e.target).style.background = 'transparent'
-                }}
+                onMouseEnter={e => e.currentTarget.style.color = isDarkBg ? 'white' : 'var(--royal)'}
+                onMouseLeave={e => e.currentTarget.style.color = isDarkBg ? 'rgba(255,255,255,0.85)' : 'var(--text-body)'}
               >
-                {t(item.en, item.ar)}
+                {t(link.label)}
               </a>
             ))}
           </div>
 
-          {/* Right Actions */}
+          {/* Actions */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <button
+            <button 
               onClick={toggleLang}
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 gap: 6,
-                color: 'white',
-                background: 'rgba(255,255,255,0.1)',
-                border: '1px solid rgba(255,255,255,0.2)',
+                background: isDarkBg ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.04)',
+                color: isDarkBg ? 'white' : 'var(--navy)',
+                border: 'none',
                 padding: '7px 14px',
-                borderRadius: 8,
-                cursor: 'pointer',
+                borderRadius: 100,
                 fontSize: 13,
                 fontWeight: 600,
+                cursor: 'pointer',
                 transition: 'all 0.2s',
-                fontFamily: 'Poppins',
+                fontFamily: lang === 'en' ? 'Cairo' : 'Poppins' // Reverse for switcher
               }}
-              onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.18)')}
-              onMouseLeave={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.1)')}
+              onMouseEnter={e => e.currentTarget.style.background = isDarkBg ? 'rgba(255,255,255,0.18)' : 'rgba(0,0,0,0.08)'}
+              onMouseLeave={e => e.currentTarget.style.background = isDarkBg ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.04)'}
             >
-              <Globe size={14} />
-              {lang === 'en' ? 'AR' : 'EN'}
+              <Globe size={15} />
+              {t('lang_switch')}
             </button>
-            <a
-              href="#contact"
-              className="btn-gold hidden-mobile"
-              style={{ textDecoration: 'none', fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}
-            >
-              {t('Get Started', 'ابدأ الآن')}
-              <ChevronRight size={15} />
-            </a>
-            <button
-              onClick={() => setOpen(!open)}
-              style={{ display: 'none', background: 'none', border: 'none', color: 'white', cursor: 'pointer', padding: 4 }}
+
+            {/* Mobile Menu Toggle */}
+            <button 
               className="mobile-menu-btn"
+              style={{
+                display: 'none',
+                background: 'none',
+                border: 'none',
+                color: isDarkBg ? 'white' : 'var(--navy)',
+                cursor: 'pointer',
+                padding: 4,
+              }}
+              onClick={() => setMenuOpen(!menuOpen)}
             >
-              {open ? <X size={24} /> : <Menu size={24} />}
+              {menuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
+      </nav>
 
-        {/* Mobile Menu */}
-        {open && (
-          <div style={{
-            borderTop: '1px solid rgba(255,255,255,0.1)',
-            paddingBottom: 16,
-            background: 'rgba(10,22,40,0.98)',
-          }}>
-            {navItems.map(item => (
-              <a
-                key={item.en}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                style={{
-                  display: 'block',
-                  color: 'rgba(255,255,255,0.85)',
-                  textDecoration: 'none',
-                  fontSize: 15,
-                  fontWeight: 500,
-                  padding: '12px 16px',
-                  borderRadius: 6,
-                  fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins',
-                }}
-              >
-                {t(item.en, item.ar)}
-              </a>
-            ))}
-            <div style={{ padding: '8px 16px' }}>
-              <a href="#contact" className="btn-gold" style={{ textDecoration: 'none', width: '100%', justifyContent: 'center' }}>
-                {t('Get Started', 'ابدأ الآن')}
-              </a>
-            </div>
-          </div>
-        )}
+      {/* Mobile Drawer */}
+      <div 
+        dir={dir}
+        style={{
+          position: 'fixed',
+          top: menuOpen ? '64px' : '-100%',
+          left: 0,
+          right: 0,
+          background: 'white',
+          padding: '16px 24px 24px',
+          boxShadow: 'var(--shadow-md)',
+          transition: 'top 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+          zIndex: 99,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 4,
+        }}
+        className="mobile-drawer"
+      >
+        {links.map((link, i) => (
+          <a 
+            key={i} 
+            href={getHref(link.to)} 
+            style={{ 
+              color: 'var(--navy)',
+              textDecoration: 'none',
+              fontSize: 16,
+              fontWeight: 600,
+              padding: '12px 0',
+              borderBottom: '1px solid var(--gray-100)'
+            }}
+          >
+            {t(link.label)}
+          </a>
+        ))}
+        <a 
+          href="/#contact" 
+          className="btn-primary" 
+          style={{ justifyContent: 'center', marginTop: 16, fontSize: 14, padding: '12px 24px' }}
+        >
+          {t('btn_contact')}
+        </a>
       </div>
 
       <style>{`
-        @media (max-width: 900px) {
-          .hidden-mobile { display: none !important; }
-          .mobile-menu-btn { display: block !important; }
+        @media (min-width: 992px) {
+          .desktop-links { display: flex !important; }
+          .mobile-menu-btn { display: none !important; }
+          .mobile-drawer { display: none !important; }
+        }
+        @media (max-width: 991px) {
+          .mobile-menu-btn { display: flex !important; }
         }
       `}</style>
-    </nav>
+    </>
   )
 }

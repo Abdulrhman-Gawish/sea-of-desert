@@ -19,19 +19,19 @@ export default function Contact() {
       icon: <MapPin size={20} />,
       label: { en: 'Location', ar: 'الموقع' },
       value: { en: 'Saudi Arabia', ar: 'المملكة العربية السعودية' },
-      color: '#1a4fa0',
+      color: 'var(--royal)',
     },
     {
       icon: <Mail size={20} />,
       label: { en: 'Email', ar: 'البريد الإلكتروني' },
       value: { en: 'info@seaofdesert.sa', ar: 'info@seaofdesert.sa' },
-      color: '#006b3e',
+      color: 'var(--green)',
     },
     {
       icon: <Phone size={20} />,
       label: { en: 'Phone', ar: 'الهاتف' },
       value: { en: '+966 5X XXX XXXX', ar: '966+ 5X XXX XXXX' },
-      color: '#c9a227',
+      color: 'var(--gold)',
     },
     {
       icon: <MessageCircle size={20} />,
@@ -43,31 +43,27 @@ export default function Contact() {
       icon: <Clock size={20} />,
       label: { en: 'Business Hours', ar: 'ساعات العمل' },
       value: { en: 'Sun–Thu: 9 AM – 6 PM', ar: 'الأحد–الخميس: 9 ص – 6 م' },
-      color: '#0d1f3c',
+      color: 'var(--navy-mid)',
     },
   ]
 
   return (
-    <section id="contact" dir={dir} style={{ background: 'var(--off-white)', padding: '100px 24px' }}>
-      <div style={{ maxWidth: 1280, margin: '0 auto' }}>
+    <section id="contact" dir={dir} className="section-pad" style={{ background: 'var(--off-white)' }}>
+      <div className="container">
         <div ref={ref} className="section-reveal">
           <div style={{ textAlign: 'center', marginBottom: 64 }}>
             <div className="pill-label" style={{ justifyContent: 'center', marginBottom: 16 }}>
-              {t("Let's Connect", 'تواصل معنا')}
+              {t('contact_pill')}
             </div>
             <h2 className="section-title" style={{ textAlign: 'center', marginBottom: 16 }}>
-              {t('Get in Touch', 'اتصل بنا')}
+              {t('contact_title')}
             </h2>
             <p className="section-subtitle" style={{ textAlign: 'center', margin: '0 auto' }}>
-              {t(
-                'Ready to explore business opportunities? Our team is here to help you grow.',
-                'هل أنت مستعد لاستكشاف فرص العمل؟ فريقنا هنا لمساعدتك على النمو.'
-              )}
+              {t('contact_subtitle')}
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 40, alignItems: 'start' }}
-            className="contact-grid">
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 40, alignItems: 'start' }} className="contact-grid">
             {/* Left: Contact Info */}
             <div>
               <div style={{
@@ -77,36 +73,37 @@ export default function Contact() {
                 marginBottom: 24,
                 position: 'relative',
                 overflow: 'hidden',
+                boxShadow: 'var(--shadow-lg)'
               }}>
                 <div style={{ position: 'absolute', top: -40, right: -40, width: 160, height: 160, borderRadius: '50%', background: 'rgba(26,79,160,0.3)' }} />
                 <h3 style={{ color: 'white', fontSize: 20, fontWeight: 700, marginBottom: 8, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins', position: 'relative' }}>
-                  {t('Contact Information', 'معلومات التواصل')}
+                  {t('Contact Information', 'Contact Information', 'معلومات التواصل')}
                 </h3>
                 <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14, marginBottom: 28, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins', position: 'relative' }}>
-                  {t("We're ready to assist you.", 'نحن هنا لمساعدتك.')}
+                  {t("We're ready to assist you.", "We're ready to assist you.", 'نحن هنا لمساعدتك.')}
                 </p>
 
                 {contactInfo.map((c, i) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 18, position: 'relative' }}>
                     <div style={{
-                      width: 40,
-                      height: 40,
-                      borderRadius: 10,
-                      background: `${c.color}20`,
+                      width: 44,
+                      height: 44,
+                      borderRadius: 12,
+                      background: 'rgba(255,255,255,0.05)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      color: c.color === '#25d366' ? c.color : 'rgba(255,255,255,0.8)',
+                      color: c.color === '#25d366' ? c.color : 'rgba(255,255,255,0.9)',
                       flexShrink: 0,
                     }}>
                       {c.icon}
                     </div>
                     <div>
                       <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: 11, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.05em', fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
-                        {t(c.label.en, c.label.ar)}
+                        {lang === 'en' ? c.label.en : c.label.ar}
                       </div>
                       <div style={{ color: 'white', fontSize: 14, fontWeight: 500, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
-                        {t(c.value.en, c.value.ar)}
+                        {lang === 'en' ? c.value.en : c.value.ar}
                       </div>
                     </div>
                   </div>
@@ -126,9 +123,9 @@ export default function Contact() {
                 flexDirection: 'column',
                 gap: 8,
               }}>
-                <MapPin size={32} color="#1a4fa0" />
+                <MapPin size={32} color="var(--royal)" />
                 <span style={{ color: 'var(--royal)', fontWeight: 600, fontSize: 14, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
-                  {t('Saudi Arabia', 'المملكة العربية السعودية')}
+                  {t('Saudi Arabia', 'Saudi Arabia', 'المملكة العربية السعودية')}
                 </span>
               </div>
             </div>
@@ -138,89 +135,93 @@ export default function Contact() {
               background: 'white',
               borderRadius: 24,
               padding: 40,
-              boxShadow: '0 4px 30px rgba(10,22,40,0.07)',
+              boxShadow: 'var(--shadow-md)',
               border: '1px solid var(--gray-100)',
             }}>
               {sent ? (
-                <div style={{ textAlign: 'center', padding: '60px 40px' }}>
-                  <div style={{ width: 80, height: 80, borderRadius: '50%', background: '#edfaf3', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 24px', color: '#006b3e' }}>
+                <div style={{ textAlign: 'center', padding: '60px 40px', animation: 'fadeIn 0.5s ease' }}>
+                  <div style={{ width: 80, height: 80, borderRadius: '50%', background: '#edfaf3', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 24px', color: 'var(--green)' }}>
                     <CheckCircle size={36} />
                   </div>
                   <h3 style={{ fontSize: 24, fontWeight: 700, color: 'var(--navy)', marginBottom: 12, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
-                    {t('Message Sent!', 'تم إرسال الرسالة!')}
+                    {t('Message Sent!', 'Message Sent!', 'تم إرسال الرسالة!')}
                   </h3>
                   <p style={{ color: 'var(--gray-600)', fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
-                    {t("We'll be in touch within 24 hours.", 'سنتواصل معك خلال 24 ساعة.')}
+                    {t("We'll be in touch within 24 hours.", "We'll be in touch within 24 hours.", 'سنتواصل معك خلال 24 ساعة.')}
                   </p>
-                  <button className="btn-primary" style={{ marginTop: 24, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }} onClick={() => setSent(false)}>
-                    {t('Send Another', 'إرسال رسالة أخرى')}
+                  <button className="btn-secondary" style={{ marginTop: 24, color: 'var(--royal)', borderColor: 'var(--royal)', fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }} onClick={() => setSent(false)}>
+                    {t('Send Another', 'Send Another', 'إرسال رسالة أخرى')}
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} style={{ animation: 'fadeIn 0.5s ease' }}>
                   <h3 style={{ fontSize: 22, fontWeight: 700, color: 'var(--navy)', marginBottom: 28, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
-                    {t('Send Us a Message', 'أرسل لنا رسالة')}
+                    {t('Send Us a Message', 'Send Us a Message', 'أرسل لنا رسالة')}
                   </h3>
 
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }} className="form-row">
                     {[
                       { field: 'name', label: { en: 'Full Name', ar: 'الاسم الكامل' }, placeholder: { en: 'Your name', ar: 'اسمك' } },
                       { field: 'company', label: { en: 'Company', ar: 'الشركة' }, placeholder: { en: 'Company name', ar: 'اسم الشركة' } },
                     ].map(({ field, label, placeholder }) => (
                       <div key={field}>
                         <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: 'var(--navy)', marginBottom: 6, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
-                          {t(label.en, label.ar)}
+                          {lang === 'en' ? label.en : label.ar}
                         </label>
                         <input
                           type="text"
-                          placeholder={t(placeholder.en, placeholder.ar)}
+                          placeholder={lang === 'en' ? placeholder.en : placeholder.ar}
                           value={form[field]}
                           onChange={e => setForm(f => ({ ...f, [field]: e.target.value }))}
                           style={{
                             width: '100%',
-                            padding: '11px 14px',
-                            borderRadius: 10,
+                            padding: '12px 16px',
+                            borderRadius: 12,
                             border: '1.5px solid var(--gray-200)',
                             fontSize: 14,
                             outline: 'none',
                             fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins',
                             transition: 'border-color 0.2s',
                             boxSizing: 'border-box',
+                            background: 'var(--gray-50)'
                           }}
                           onFocus={e => (e.target.style.borderColor = 'var(--royal)')}
                           onBlur={e => (e.target.style.borderColor = 'var(--gray-200)')}
+                          required
                         />
                       </div>
                     ))}
                   </div>
 
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }} className="form-row">
                     {[
                       { field: 'email', label: { en: 'Email', ar: 'البريد الإلكتروني' }, placeholder: { en: 'your@email.com', ar: 'بريدك@مثال.com' }, type: 'email' },
                       { field: 'phone', label: { en: 'Phone', ar: 'الهاتف' }, placeholder: { en: '+966 5X XXX XXXX', ar: '966+ 5X XXX XXXX' }, type: 'tel' },
                     ].map(({ field, label, placeholder, type }) => (
                       <div key={field}>
                         <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: 'var(--navy)', marginBottom: 6, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
-                          {t(label.en, label.ar)}
+                          {lang === 'en' ? label.en : label.ar}
                         </label>
                         <input
                           type={type}
-                          placeholder={t(placeholder.en, placeholder.ar)}
+                          placeholder={lang === 'en' ? placeholder.en : placeholder.ar}
                           value={form[field]}
                           onChange={e => setForm(f => ({ ...f, [field]: e.target.value }))}
                           style={{
                             width: '100%',
-                            padding: '11px 14px',
-                            borderRadius: 10,
+                            padding: '12px 16px',
+                            borderRadius: 12,
                             border: '1.5px solid var(--gray-200)',
                             fontSize: 14,
                             outline: 'none',
                             fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins',
                             transition: 'border-color 0.2s',
                             boxSizing: 'border-box',
+                            background: 'var(--gray-50)'
                           }}
                           onFocus={e => (e.target.style.borderColor = 'var(--royal)')}
                           onBlur={e => (e.target.style.borderColor = 'var(--gray-200)')}
+                          required
                         />
                       </div>
                     ))}
@@ -228,17 +229,17 @@ export default function Contact() {
 
                   <div style={{ marginBottom: 24 }}>
                     <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: 'var(--navy)', marginBottom: 6, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
-                      {t('Message', 'الرسالة')}
+                      {t('Message', 'Message', 'الرسالة')}
                     </label>
                     <textarea
-                      placeholder={t('Tell us about your business needs...', 'أخبرنا عن احتياجاتك التجارية...')}
-                      rows={5}
+                      placeholder={t('Tell us about your business needs...', 'Tell us about your business needs...', 'أخبرنا عن احتياجاتك التجارية...')}
+                      rows={4}
                       value={form.message}
                       onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
                       style={{
                         width: '100%',
-                        padding: '11px 14px',
-                        borderRadius: 10,
+                        padding: '12px 16px',
+                        borderRadius: 12,
                         border: '1.5px solid var(--gray-200)',
                         fontSize: 14,
                         outline: 'none',
@@ -246,15 +247,17 @@ export default function Contact() {
                         fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins',
                         transition: 'border-color 0.2s',
                         boxSizing: 'border-box',
+                        background: 'var(--gray-50)'
                       }}
                       onFocus={e => (e.target.style.borderColor = 'var(--royal)')}
                       onBlur={e => (e.target.style.borderColor = 'var(--gray-200)')}
+                      required
                     />
                   </div>
 
-                  <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center', fontSize: 15, padding: '14px 28px', fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
+                  <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center', fontSize: 15, padding: '16px', fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
                     <Send size={16} />
-                    {t('Send Message', 'إرسال الرسالة')}
+                    {t('Send Message', 'Send Message', 'إرسال الرسالة')}
                   </button>
                 </form>
               )}
@@ -266,6 +269,9 @@ export default function Contact() {
       <style>{`
         @media (max-width: 900px) {
           .contact-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 600px) {
+          .form-row { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </section>

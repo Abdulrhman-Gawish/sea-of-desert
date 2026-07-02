@@ -1,17 +1,34 @@
 import { createContext, useContext, useState, useEffect } from 'react'
+import { translations } from '../data/translations'
+
 const LangContext = createContext({
-  lang: 'en',
+  lang: 'ar',
   toggleLang: () => {},
-  t: (en) => en,
-  dir: 'ltr',
+  t: (key) => key,
+  dir: 'rtl',
 })
 
 export function LangProvider({ children }) {
-  const [lang, setLang] = useState('en')
+  const [lang, setLang] = useState(() => {
+    return localStorage.getItem('language') || 'ar'
+  })
 
-  const toggleLang = () => setLang(l => l === 'en' ? 'ar' : 'en')
+  const toggleLang = () => {
+    setLang(l => {
+      const newLang = l === 'en' ? 'ar' : 'en'
+      localStorage.setItem('language', newLang)
+      return newLang
+    })
+  }
+
   const dir = lang === 'ar' ? 'rtl' : 'ltr'
-  const t = (en, ar) => lang === 'en' ? en : ar
+  
+  const t = (key, fallbackEn, fallbackAr) => {
+    const item = translations[key]
+    if (item) return item[lang]
+    if (fallbackEn && fallbackAr) return lang === 'en' ? fallbackEn : fallbackAr
+    return key
+  }
 
   useEffect(() => {
     document.documentElement.dir = dir
