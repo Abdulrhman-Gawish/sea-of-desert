@@ -30,7 +30,7 @@ export default function Navbar() {
 
   const links = [
     { label: 'nav_home', to: '/' },
-    { label: 'nav_about', to: '/#about' },
+    { label: 'nav_about', to: '/about' },
     { label: 'nav_business', to: '/business-solutions' },
     { label: 'nav_supply', to: '/supply-chain' },
     { label: 'nav_contact', to: '#contact' },
