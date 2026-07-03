@@ -9,10 +9,10 @@ export default function Footer() {
 
   const links = {
     company: [
-      { label: 'nav_about', to: '/#about' },
+      { label: 'nav_about', to: '/about' },
       { label: 'nav_business', to: '/business-solutions' },
       { label: 'nav_supply', to: '/supply-chain' },
-      { label: 'nav_contact', to: '/#contact' },
+      { label: 'nav_contact', to: '/contact' },
     ],
     services: [
       { label: 'srv_trade_title', to: '/supply-chain' },
@@ -178,7 +178,7 @@ export default function Footer() {
             <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: 13, lineHeight: 1.6, marginBottom: 20, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
               {t('contact_subtitle')}
             </p>
-            <Link to="/#contact" className="btn-gold" style={{ fontSize: 14, padding: '10px 24px', fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
+            <Link to="/contact" className="btn-gold" style={{ fontSize: 14, padding: '10px 24px', fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
               {t('btn_contact')}
             </Link>
           </div>

@@ -28,30 +28,82 @@ export const translations = {
   about_pill: { en: 'Our Story', ar: 'قصتنا' },
   about_title: { en: 'Who We Are', ar: 'من نحن' },
   about_subtitle: {
-    en: 'Founded in 2022 with ambition and purpose — to bridge the Arab world with global markets through trade, technology, and strategic partnerships.',
-    ar: 'تأسست عام 2022 بطموح وهدف — لربط العالم العربي بالأسواق العالمية من خلال التجارة والتكنولوجيا والشراكات الاستراتيجية.'
+    en: 'We are a team that combines experience and ambition, striving to provide practical and integrated solutions for companies and institutions by combining commercial and technological expertise.',
+    ar: 'نحن فريق يجمع بين الخبرة والطموح، ونسعى إلى تقديم حلول عملية ومتكاملة للشركات والمؤسسات من خالل الجمع بين الخبرة التجارية والتكنولوجية.'
   },
-  name_idea_title: { en: 'The Idea Behind the Name', ar: 'الفكرة وراء الاسم' },
+  about_subtitle_2: {
+    en: 'We believe that business success depends on strong partnerships, strategic planning, and continuous development, so we are keen to expand our network of partners around the world and build long-term relationships based on trust and professionalism.',
+    ar: 'نؤمن بأن نجاح األعمال يعتمد على الشراكات القوية والتخطيط االستراتيجي والتطوير المستمر، لذلك نحرص على توسيع شبكة شركائنا حول العالم وبناء عالقات طويلة األمد تقوم على الثقة واالحترافية.'
+  },
+  about_subtitle_3: {
+    en: 'Our goal is to be a reliable strategic partner that helps companies grow and expand in local and global markets.',
+    ar: 'هدفنا هو أن نكون شريكًا استراتيجيًا موثوقًا يساعد الشركات على النمو والتوسع في األسواق المحلية والعالمية.'
+  },
+  
+  name_idea_title: { en: 'Idea and Establishment', ar: 'الفكرة والتأسيس' },
   name_idea_desc1: {
-    en: 'The Desert represents our Arab roots and identity — deeply connected to the region we serve. The Sea represents openness to the world, global markets, and endless opportunities.',
-    ar: 'الصحراء تمثل جذورنا العربية وهويتنا — عميقة الارتباط بالمنطقة التي نخدمها. البحر يمثل الانفتاح على العالم والأسواق العالمية والفرص اللامحدودة.'
+    en: 'The idea of establishing Sea of Desert emerged from an ambitious vision based on connecting local and global markets, and providing integrated solutions that combine international trade, logistics, and technology. This idea came as a response to the rapid economic and commercial changes witnessed by the world, which require business partners capable of facilitating the movement of trade and providing professional solutions for companies and institutions.',
+    ar: 'نشأت فكرة تأسيس شركة بحر الصحراء من رؤية طموحة تقوم على الربط بين األسواق المحلية والعالمية، وتقديم حلول متكاملة تجمع بين التجارة الدولية والخدمات اللوجستية والتكنولوجيا. وقد جاءت هذه الفكرة استجابةً للتغيرات االقتصادية والتجارية المتسارعة التي يشهدها العالم، والتي تتطلب وجود شركاء أعمال قادرين على تسهيل حركة التجارة وتوفير حلول احترافية للشركات والمؤسسات.'
   },
   name_idea_desc2: {
-    en: 'Sea of Desert emerged from a vision to bridge local markets with international ones — offering a full ecosystem of trade, logistics, digital services, and healthcare solutions.',
-    ar: 'نشأت شركة بحر الصحراء من رؤية لربط الأسواق المحلية بالدولية — وتقديم منظومة متكاملة من التجارة والخدمات اللوجستية والرقمية والصحية.'
+    en: 'In light of the growing development in global markets, the need arose for an entity that has the ability to combine commercial and technical expertise, and acts as a link between the Middle East and markets in Asia such as China and Turkey. Hence, the idea of establishing Sea of Desert International Company was launched, to be a business platform that combines local expertise and international partnerships, and provides various services that contribute to supporting the economy and enhancing trade and investment movement.',
+    ar: 'وفي ظل التطور المتزايد في األسواق العالمية، برزت الحاجة إلى كيان يمتلك القدرة على الجمع بين الخبرة التجارية والتقنية، ويعمل كحلقة وصل بين الشرق األوسط واألسواق في آسيا مثل الصين وتركيا. ومن هنا انطلقت فكرة إنشاء شركة بحر الصحراء الدولية، لتكون منصة أعمال تجمع بين الخبرة المحلية والشراكات الدولية، وتقدم خدمات متنوعة تساهم في دعم االقتصاد وتعزيز حركة التجارة واالستثمار.'
+  },
+  name_idea_desc3: {
+    en: 'The company\'s name also reflects its business philosophy; the desert represents our Arab roots and belonging to the region, while the sea symbolizes openness to the world and communication with international markets. Through this concept, the company seeks to combine the strength of local roots with the breadth of global horizons.',
+    ar: 'كما يعكس اسم الشركة فلسفتها في العمل؛ فالصحراء تمثل الجذور العربية واالنتماء إلى المنطقة، بينما يرمز البحر إلى االنفتاح على العالم والتواصل مع األسواق الدولية. ومن خالل هذا المفهوم تسعى الشركة إلى الجمع بين قوة الجذور المحلية واتساع اآلفاق العالمية.'
   },
 
   // Values
-  val_mission: { en: 'Mission', ar: 'المهمة' },
-  val_mission_desc: { en: 'Connecting local businesses with global opportunities through integrated trade and technology solutions.', ar: 'ربط الشركات المحلية بالفرص العالمية من خلال حلول تجارية وتكنولوجية متكاملة.' },
+  val_mission: { en: 'Company Definition', ar: 'التعريف بالشركة' },
+  val_mission_desc: { en: 'Sea of Desert is a multi-activity company operating in several sectors including International Trade, Logistics, Contracting, E-commerce, Technology, Digital Marketing, Accounting Services, Security Systems, and Medical Products.', ar: 'بحر الصحراء هي شركة متعددة األنشطة تعمل في عدة قطاعات تشمل التجارة الدولية، الخدمات اللوجستية، التخليص الجمركي، المقاوالت، التجارة اإللكترونية، التكنولوجيا، التسويق الرقمي، الخدمات المحاسبية، أنظمة األمن والسالمة، والمنتجات الطبية.' },
   val_vision: { en: 'Vision', ar: 'الرؤية' },
-  val_vision_desc: { en: 'To become a leading platform in international trade, logistics, and technology across the Middle East and Asia.', ar: 'أن نصبح منصة رائدة في التجارة الدولية واللوجستيات والتكنولوجيا في الشرق الأوسط وآسيا.' },
+  val_vision_desc: { en: 'Sea of Desert aims to become one of the leading companies in the region in the fields of international trade, logistics, and technology, and to be a business platform connecting global markets and investment opportunities in the Middle East.', ar: 'أن تصبح شركة بحر الصحراء واحدة من الشركات الرائدة في المنطقة في مجاالت التجارة الدولية والخدمات اللوجستية والتكنولوجيا، وأن تكون منصة أعمال تربط بين األسواق العالمية والفرص االستثمارية في الشرق األوسط.' },
   val_values: { en: 'Values', ar: 'القيم' },
   val_values_desc: { en: 'Integrity, excellence, and long-term partnership. We build trust through transparency and commitment.', ar: 'النزاهة والتميز والشراكة طويلة الأمد. نبني الثقة من خلال الشفافية والالتزام.' },
   val_innovation: { en: 'Innovation', ar: 'الابتكار' },
   val_innovation_desc: { en: 'Leveraging cutting-edge technology to deliver smarter business solutions and digital transformation.', ar: 'الاستفادة من أحدث التقنيات لتقديم حلول أعمال أذكى وتحقيق التحول الرقمي.' },
 
-  // Timeline
+  // Methodology
+  methodology_title: { en: 'Work Methodology', ar: 'منهج العمل' },
+  methodology_1: { en: 'Building long-term strategic partnerships', ar: 'بناء شراكات استراتيجية طويلة المدى' },
+  methodology_2: { en: 'Providing integrated and innovative solutions to clients', ar: 'تقديم حلول متكاملة ومبتكرة للعمالء' },
+  methodology_3: { en: 'Commitment to the highest standards of quality and transparency', ar: 'االلتزام بأعلى معايير الجودة والشفافية' },
+  methodology_4: { en: 'Using technology to develop services', ar: 'استخدام التكنولوجيا لتطوير الخدمات' },
+  methodology_5: { en: 'Continuous expansion in regional and global markets', ar: 'التوسع المستمر في األسواق اإلقليمية والعالمية' },
+
+  // Goals
+  goals_title: { en: 'Company Goals', ar: 'أهداف الشركة' },
+  goals_1: { en: 'Supporting international trade movement between global and local markets', ar: 'دعم حركة التجارة الدولية بين األسواق العالمية واألسواق المحلية' },
+  goals_2: { en: 'Facilitating import, export, and supply operations', ar: 'تسهيل عمليات االستيراد والتصدير والتوريدات' },
+  goals_3: { en: 'Providing integrated logistics and technical services', ar: 'تقديم خدمات لوجستية وتقنية متكاملة' },
+  goals_4: { en: 'Supporting companies and institutions in reaching global markets', ar: 'دعم الشركات والمؤسسات في الوصول إلى األسواق العالمية' },
+  goals_5: { en: 'Building a strong international partnership network that supports economic growth', ar: 'بناء شبكة شراكات دولية قوية تدعم النمو االقتصادي' },
+
+  // Partners
+  partners_title: { en: 'Our Partners', ar: 'شركاؤنا' },
+  partners_desc: { en: 'Sea of Desert believes that strategic partnerships represent one of the most important factors for success and growth in the modern business world. Therefore, since its establishment, it has been keen to build a strong network of international relations with leading companies in multiple fields.', ar: 'تؤمن شركة بحر الصحراء بأن الشراكات االستراتيجية تمثل أحد أهم عوامل النجاح والنمو في عالم األعمال الحديث، لذلك حرصت منذ تأسيسها على بناء شبكة قوية من العالقات الدولية مع شركات رائدة في مجاالت متعددة.' },
+  partners_desc_2: { en: 'These partnerships were not just commercial cooperation, but a fundamental pillar in developing the company\'s capabilities and expanding its scope of business, contributing to providing integrated services that meet market needs and keep pace with global developments.', ar: 'ولم تكن هذه الشراكات مجرد تعاون تجاري، بل كانت ركيزة أساسية في تطوير قدرات الشركة وتوسيع نطاق أعمالها، بما يساهم في تقديم خدمات متكاملة تلبي احتياجات السوق وتواكب التطورات العالمية.' },
+  partner_1_title: { en: 'Dana Al Mazoon Company', ar: 'شركة دانة المزون' },
+  partner_1_desc: { en: 'In the spring of 2023, the partnership began in the field of import and export from China and Turkey. This cooperation contributed to the implementation of a number of important supply operations, including government supplies in the Eastern Province of Saudi Arabia - Dammam, which formed an important step in the company\'s expansion in international trade.', ar: 'في ربيع عام 2023 بدأت الشراكة مع شركة دانة المزون في مجال االستيراد والتصدير من الصين وتركيا، وقد ساهم هذا التعاون في تنفيذ عدد من عمليات التوريد المهمة، من بينها توريدات حكومية في المنطقة الشرقية بالمملكة العربية السعودية – الدمام، مما شكل خطوة مهمة في توسع الشركة في التجارة الدولية.' },
+  partner_2_title: { en: 'Magic Land (China)', ar: 'شركة Magic Land الصينية' },
+  partner_2_desc: { en: 'In 2024, Sea of Desert established a strategic partnership with the Chinese company Magic Land, which contributed to expanding the company\'s business scope in the fields of: Import & Export, Contracting, E-commerce, and Ocean Freight & Logistics.', ar: 'في عام 2024 عقدت شركة بحر الصحراء شراكة استراتيجية مع الشركة الصينية Magic Land، والتي ساهمت في توسيع نطاق أعمال الشركة في مجاالت: االستيراد والتصدير، المقاوالت، التجارة اإللكترونية، والشحن البحري والخدمات اللوجستية.' },
+  partner_3_title: { en: 'You Wang Zhou (China)', ar: 'شركة You Wang Zhou الصينية' },
+  partner_3_desc: { en: 'In 2025, Sea of Desert entered into a partnership with the Chinese company You Wang Zhou, specializing in logistics and commercial services, which include: Import & Export, Shipping & Unloading, Customs Clearance, Security & Safety Systems, and Surveillance & Protection Systems. This partnership has contributed to developing the company\'s logistics services ecosystem.', ar: 'في عام 2025 دخلت شركة بحر الصحراء في شراكة مع الشركة الصينية You Wang Zhou المتخصصة في الخدمات اللوجستية والتجارية، والتي تشمل: االستيراد والتصدير، الشحن والتفريغ، التخليص الجمركي، أنظمة األمن والسالمة، أنظمة المراقبة والحماية. وقد ساهمت هذه الشراكة في تطوير منظومة الخدمات اللوجستية للشركة.' },
+  partner_4_title: { en: 'Ultimate (Egypt)', ar: 'شركة Ultimate المصرية' },
+  partner_4_desc: { en: 'At the end of 2024, cooperation began with the Egyptian company Ultimate, as this partnership contributed to the company\'s entry into the field of technology and digital services. Its most important services include: Website Design & Development, Digital Marketing, Remote Accounting Services, and Administrative & Commercial Services for Companies.', ar: 'في نهاية عام 2024 بدأ التعاون مع شركة Ultimate المصرية، حيث ساهمت هذه الشراكة في دخول الشركة إلى مجال التكنولوجيا والخدمات الرقمية، ومن أهم خدماتها: تصميم وتطوير المواقع اإللكترونية، التسويق الرقمي، الخدمات المحاسبية عن بعد، والخدمات اإلدارية والتجارية للشركات.' },
+  partner_5_title: { en: 'Malo Pharma (Egypt)', ar: 'شركة Malo Pharma المصرية' },
+  partner_5_desc: { en: 'In the spring of 2025, Sea of Desert entered the medical field through a strategic partnership with the Egyptian company Malo Pharma, which specializes in manufacturing medical products. A number of medical products were launched in the Saudi market in October 2025. This cooperation represents an important step in the company\'s expansion in the health sector.', ar: 'في ربيع عام 2025 دخلت شركة بحر الصحراء المجال الطبي من خالل شراكة استراتيجية مع شركة Malo Pharma المصرية المتخصصة في تصنيع المنتجات الطبية، وقد تم إطالق عدد من المنتجات الطبية في السوق السعودي في أكتوبر 2025. ويمثل هذا التعاون خطوة مهمة في توسع الشركة في القطاع الصحي.' },
+
+  // Medical Expansion
+  medical_title: { en: 'Expansion in the Medical Field', ar: 'التوسع في المجال الطبي' },
+  medical_desc: { en: 'The company\'s entry into the medical field represents an important strategic step, as the health sector is one of the most vital sectors affecting the lives of communities. Through the partnership with Malo Pharma, the company works to provide high-quality medical products that contribute to supporting the health system and improving the quality of medical care.', ar: 'يمثل دخول الشركة إلى المجال الطبي خطوة استراتيجية مهمة، حيث يعد القطاع الصحي من أكثر القطاعات الحيوية تأثيرًا في حياة المجتمعات. ومن خالل الشراكة مع شركة Malo Pharma تعمل الشركة على توفير منتجات طبية عالية الجودة تساهم في دعم المنظومة الصحية وتحسين جودة الرعاية الطبية.' },
+  medical_point_1: { en: 'Supporting the quality of health services', ar: 'دعم جودة الخدمات الصحية' },
+  medical_point_2: { en: 'Transfer of knowledge and medical technologies', ar: 'نقل المعرفة والتقنيات الطبية' },
+  medical_point_3: { en: 'Diversifying economic investments', ar: 'تنويع االستثمارات االقتصادية' },
+  medical_point_4: { en: 'Improving the quality of life for society', ar: 'تحسين جودة الحياة للمجتمع' },
+
+  // Timeline (Keeping old keys just in case they are used elsewhere, though we will revamp About.jsx)
   timeline_title: { en: 'Our Journey', ar: 'رحلتنا' },
   time_2022: { en: 'Company Founded with SAR 100,000 capital', ar: 'تأسست الشركة برأس مال 100,000 ريال' },
   time_2023: { en: 'Dana Al Mazoon partnership — government supply contracts', ar: 'شراكة دانة المزون — عقود توريد حكومية' },
@@ -60,11 +112,15 @@ export const translations = {
 
   // Vision 2030
   v2030_pill: { en: 'Supporting the Kingdom', ar: 'دعم المملكة' },
-  v2030_title: { en: 'Aligned with Saudi Vision 2030', ar: 'متوافقون مع رؤية السعودية 2030' },
+  v2030_title: { en: 'Role in Achieving Vision 2030', ar: 'دور الشركة في تحقيق رؤية 2030' },
   v2030_desc: {
-    en: 'Sea of Desert actively supports Saudi Vision 2030 by driving international trade, digital transformation, healthcare expansion, and economic diversification.',
-    ar: 'تدعم شركة بحر الصحراء بنشاط رؤية السعودية 2030 من خلال دفع التجارة الدولية والتحول الرقمي والتوسع في الرعاية الصحية وتنويع الاقتصاد.'
+    en: 'Sea of Desert seeks to be an active part in supporting the march of economic development in the Kingdom of Saudi Arabia within the framework of Saudi Vision 2030, through its activities in international trade, logistics, technology, and the medical sector.',
+    ar: 'تسعى شركة بحر الصحراء إلى أن تكون جزءًا فاعالً في دعم مسيرة التنمية االقتصادية في المملكة العربية السعودية ضمن إطار Saudi Vision 2030، من خالل أنشطتها في التجارة الدولية والخدمات اللوجستية والتكنولوجيا والقطاع الطبي.'
   },
+  v2030_point_1: { en: 'Enhancing international trade and connecting global markets with the local economy', ar: 'تعزيز التجارة الدولية وربط األسواق العالمية باالقتصاد المحلي' },
+  v2030_point_2: { en: 'Supporting the digital transformation of companies and institutions', ar: 'دعم التحول الرقمي للشركات والمؤسسات' },
+  v2030_point_3: { en: 'Developing the health sector', ar: 'تطوير القطاع الصحي' },
+  v2030_point_4: { en: 'Enhancing the business environment through international partnerships', ar: 'تعزيز بيئة األعمال من خالل الشراكات الدولية' },
   
   // Business Area Cards (Home)
   card_business_title: { en: 'Business Solutions', ar: 'حلول الأعمال' },
@@ -129,6 +185,32 @@ export const translations = {
   contact_title: { en: 'Get in Touch', ar: 'اتصل بنا' },
   contact_subtitle: { en: 'Ready to explore business opportunities? Our team is here to help you grow.', ar: 'هل أنت مستعد لاستكشاف فرص العمل؟ فريقنا هنا لمساعدتك على النمو.' },
   
+  // Team Section
+  team_pill: { en: 'Our Team', ar: 'فريقنا' },
+  team_title: { en: 'Meet Our Team', ar: 'تعرّف على فريقنا' },
+  team_subtitle: { en: 'The talented people behind Sea of Desert who drive innovation and deliver excellence every day.', ar: 'الأشخاص الموهوبون وراء بحر الصحراء الذين يقودون الابتكار ويقدمون التميز كل يوم.' },
+  team_1_name: { en: 'Ahmed Hassan', ar: 'أحمد حسن' },
+  team_1_position: { en: 'CEO & Founder', ar: 'الرئيس التنفيذي والمؤسس' },
+  team_2_name: { en: 'Sara Mohamed', ar: 'سارة محمد' },
+  team_2_position: { en: 'Project Manager', ar: 'مديرة المشاريع' },
+  team_3_name: { en: 'Omar Ali', ar: 'عمر علي' },
+  team_3_position: { en: 'Full Stack Developer', ar: 'مطور ويب متكامل' },
+
+  // About Page Hero
+  about_hero_title: { en: 'About Us', ar: 'من نحن' },
+  about_hero_subtitle: { en: 'Discover our story, mission, and the values that drive us to connect local vision with global opportunities.', ar: 'اكتشف قصتنا ومهمتنا والقيم التي تدفعنا لربط الرؤية المحلية بالفرص العالمية.' },
+
+  // Contact Page Hero
+  contact_hero_title: { en: 'Contact Us', ar: 'تواصل معنا' },
+  contact_hero_subtitle: { en: 'Have a question or ready to start a project? We\'d love to hear from you.', ar: 'لديك سؤال أو مستعد لبدء مشروع؟ يسعدنا سماعك.' },
+
+  // Contact Form — Subject field
+  contact_subject_label: { en: 'Subject', ar: 'الموضوع' },
+  contact_subject_placeholder: { en: 'Message subject', ar: 'موضوع الرسالة' },
+
+  // Social Media
+  social_follow: { en: 'Follow Us', ar: 'تابعنا' },
+
   // Footer
   company: { en: 'Company', ar: 'الشركة' },
   services: { en: 'Services', ar: 'الخدمات' },

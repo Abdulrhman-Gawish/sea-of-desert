@@ -30,10 +30,10 @@ export default function Navbar() {
 
   const links = [
     { label: 'nav_home', to: '/' },
-    { label: 'nav_about', to: '/#about' },
+    { label: 'nav_about', to: '/about' },
     { label: 'nav_business', to: '/business-solutions' },
     { label: 'nav_supply', to: '/supply-chain' },
-    { label: 'nav_contact', to: '/#contact' },
+    { label: 'nav_contact', to: '/contact' },
   ]
 
 
@@ -193,7 +193,7 @@ export default function Navbar() {
           </Link>
         ))}
         <Link 
-          to="/#contact" 
+          to="/contact" 
           className="btn-primary" 
           style={{ justifyContent: 'center', marginTop: 16, fontSize: 14, padding: '12px 24px' }}
         >

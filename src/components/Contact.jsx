@@ -7,7 +7,7 @@ export default function Contact() {
   const ref = useScrollReveal()
   const { t, dir, lang } = useLang()
   const [sent, setSent] = useState(false)
-  const [form, setForm] = useState({ name: '', company: '', email: '', phone: '', message: '' })
+  const [form, setForm] = useState({ name: '', company: '', email: '', phone: '', subject: '', message: '' })
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -51,17 +51,7 @@ export default function Contact() {
     <section id="contact" dir={dir} className="section-pad" style={{ background: 'var(--off-white)' }}>
       <div className="container">
         <div ref={ref} className="section-reveal">
-          <div style={{ textAlign: 'center', marginBottom: 64 }}>
-            <div className="pill-label" style={{ justifyContent: 'center', marginBottom: 16 }}>
-              {t('contact_pill')}
-            </div>
-            <h2 className="section-title" style={{ textAlign: 'center', marginBottom: 16 }}>
-              {t('contact_title')}
-            </h2>
-            <p className="section-subtitle" style={{ textAlign: 'center', margin: '0 auto' }}>
-              {t('contact_subtitle')}
-            </p>
-          </div>
+
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 40, alignItems: 'start' }} className="contact-grid">
             {/* Left: Contact Info */}
@@ -225,6 +215,33 @@ export default function Contact() {
                         />
                       </div>
                     ))}
+                  </div>
+
+                  <div style={{ marginBottom: 16 }}>
+                    <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: 'var(--navy)', marginBottom: 6, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
+                      {t('contact_subject_label')}
+                    </label>
+                    <input
+                      type="text"
+                      placeholder={t('contact_subject_placeholder')}
+                      value={form.subject}
+                      onChange={e => setForm(f => ({ ...f, subject: e.target.value }))}
+                      style={{
+                        width: '100%',
+                        padding: '12px 16px',
+                        borderRadius: 12,
+                        border: '1.5px solid var(--gray-200)',
+                        fontSize: 14,
+                        outline: 'none',
+                        fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins',
+                        transition: 'border-color 0.2s',
+                        boxSizing: 'border-box',
+                        background: 'var(--gray-50)'
+                      }}
+                      onFocus={e => (e.target.style.borderColor = 'var(--royal)')}
+                      onBlur={e => (e.target.style.borderColor = 'var(--gray-200)')}
+                      required
+                    />
                   </div>
 
                   <div style={{ marginBottom: 24 }}>
