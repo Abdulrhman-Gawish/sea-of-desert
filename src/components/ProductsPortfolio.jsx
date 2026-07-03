@@ -50,6 +50,36 @@ const products = [
       ar: ['يخفف الحموضة والحرقان بسرعة', 'يقلل الانتفاخ ويحسن الهضم', 'تركيبة طبيعية مدعمة بإنزيمات', 'طعم برتقالي مستساغ']
     },
     color: '#c9a227'
+  },
+  {
+    id: 'sanzi-baby',
+    name: { en: 'SANZI Baby Care', ar: 'سانزي للعناية بالأطفال' },
+    category: { en: 'Baby Care Cleaner', ar: 'منظف للعناية بالأطفال' },
+    image: '/images/products/sanzi-baby.png',
+    desc: {
+      en: 'Advanced formula specially designed for baby care from day one. Because your baby deserves complete protection and care.',
+      ar: 'تم تطويره خصيصًا للعناية بالأطفال منذ اليوم الأول بتركيبة متقدمة وآمنة. طفلك في أمان …مع سانزي'
+    },
+    benefits: {
+      en: ['Cleans feeding bottles, pacifiers, and baby tools', 'Protects from bacteria and infections', 'Suitable for baby clothes and sensitive skin', 'Disinfectant + cleaner + safe formula'],
+      ar: ['تنظيف الرضاعات واللهايات وجميع مستلزمات الطفل', 'حماية من الجراثيم والعدوى', 'مناسب لملابس الأطفال والبشرة الحساسة', 'مطهر ومعقم وآمن بالكامل']
+    },
+    color: '#0ea5e9'
+  },
+  {
+    id: 'sanzi-food',
+    name: { en: 'SANZI Food & Veg', ar: 'سانزي للخضروات والفواكه' },
+    category: { en: 'Food & Vegetable Cleaner', ar: 'منظف الخضروات والفواكه' },
+    image: '/images/products/sanzi-food.png',
+    desc: {
+      en: 'Essential product for cleaning fruits, vegetables, and food safely. Clean food, safe life, healthier future.',
+      ar: 'منتج أساسي لتنظيف الطعام وضمان سلامته. حياة صحية خالية من الأمراض …طعام نظيف'
+    },
+    benefits: {
+      en: ['Uses Powerful Cleanser Technology', 'Removes bacteria, microbes, fungi, and parasites', '100% natural and safe', 'Suitable for all ages including infants'],
+      ar: ['تقنية Powerful Cleanser', 'يقضي على البكتيريا والميكروبات والطفيليات', 'يزيل العوالق والفطريات ومناسب لجميع الأعمار', 'آمن 100%']
+    },
+    color: '#22c55e'
   }
 ]
 
@@ -95,7 +125,7 @@ export default function ProductsPortfolio() {
                 {/* Product Image Placeholder */}
                 <div style={{
                   height: 200,
-                  background: `linear-gradient(135deg, ${p.color}08, ${p.color}15)`,
+                  background: 'white',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -108,10 +138,14 @@ export default function ProductsPortfolio() {
                     src={p.image} 
                     alt={p.name[lang]}
                     style={{
-                      maxHeight: '80%',
-                      maxWidth: '80%',
+                      maxWidth: '100%',
+                      maxHeight: '100%',
+                      width: '100%',
+                      height: '100%',
                       objectFit: 'contain',
+                      objectPosition: 'center'
                     }}
+                    loading="lazy"
                     onError={(e) => {
                       // Hide the broken image and show the placeholder
                       e.target.style.display = 'none'

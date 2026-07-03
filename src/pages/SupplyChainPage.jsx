@@ -104,7 +104,7 @@ export default function SupplyChainPage() {
               {/* Project 1 */}
               <div className="card-hover" style={{ borderRadius: 20, overflow: 'hidden', border: '1px solid var(--gray-100)', background: 'white' }}>
                 <div style={{ height: 220, background: 'var(--gray-100)', position: 'relative' }}>
-                  <img src="https://images.unsplash.com/photo-1586528116311-ad8ed7c80a30?w=600&q=80" alt="Logistics" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img src="/images/Eastern Province Supply Contracts.jpg" alt="Logistics" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <div style={{ padding: 32 }}>
                   <div style={{ color: 'var(--green)', fontSize: 11, fontWeight: 700, marginBottom: 8, letterSpacing: '0.08em', textTransform: 'uppercase' }}>{lang === 'en' ? 'GOVERNMENT SUPPLY' : 'توريد حكومي'}</div>
@@ -131,7 +131,7 @@ export default function SupplyChainPage() {
               {/* Project 2 */}
               <div className="card-hover" style={{ borderRadius: 20, overflow: 'hidden', border: '1px solid var(--gray-100)', background: 'white' }}>
                 <div style={{ height: 220, background: 'var(--gray-100)', position: 'relative' }}>
-                  <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&q=80" alt="Medical Products" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img src="/images/Malo Pharma Distribution.jpg" alt="Medical Products" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <div style={{ padding: 32 }}>
                   <div style={{ color: 'var(--royal)', fontSize: 11, fontWeight: 700, marginBottom: 8, letterSpacing: '0.08em', textTransform: 'uppercase' }}>{lang === 'en' ? 'MEDICAL PRODUCTS' : 'منتجات طبية'}</div>
