@@ -12,7 +12,7 @@ export default function Footer() {
       { label: 'nav_about', to: '/#about' },
       { label: 'nav_business', to: '/business-solutions' },
       { label: 'nav_supply', to: '/supply-chain' },
-      { label: 'nav_contact', to: '#contact' },
+      { label: 'nav_contact', to: '/#contact' },
     ],
     services: [
       { label: 'srv_trade_title', to: '/supply-chain' },
@@ -23,10 +23,7 @@ export default function Footer() {
     ],
   }
 
-  const getTo = (to) => {
-    if (to.startsWith('#')) return `/${to}`
-    return to
-  }
+
 
   return (
     <footer dir={dir} style={{ background: '#0a1628', color: 'rgba(255,255,255,0.7)', position: 'relative', overflow: 'hidden' }}>
@@ -148,7 +145,7 @@ export default function Footer() {
             </h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               {links.company.map((l, i) => (
-                <Link key={i} to={getTo(l.to)} style={{ color: 'rgba(255,255,255,0.55)', textDecoration: 'none', fontSize: 14, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins', transition: 'color 0.2s' }}
+                <Link key={i} to={l.to} style={{ color: 'rgba(255,255,255,0.55)', textDecoration: 'none', fontSize: 14, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins', transition: 'color 0.2s' }}
                   onMouseEnter={e => (e.currentTarget.style.color = 'var(--gold)')}
                   onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.55)')}>
                   {t(l.label)}

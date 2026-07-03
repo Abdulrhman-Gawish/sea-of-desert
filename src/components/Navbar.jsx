@@ -30,17 +30,13 @@ export default function Navbar() {
 
   const links = [
     { label: 'nav_home', to: '/' },
-    { label: 'nav_about', to: '/about' },
+    { label: 'nav_about', to: '/#about' },
     { label: 'nav_business', to: '/business-solutions' },
     { label: 'nav_supply', to: '/supply-chain' },
-    { label: 'nav_contact', to: '#contact' },
+    { label: 'nav_contact', to: '/#contact' },
   ]
 
-  // Normalize hash-only links to always include leading slash for consistency
-  const getTo = (to) => {
-    if (to === '#contact') return '/#contact'
-    return to
-  }
+
 
   const isHome = pathname === '/'
   const isDarkBg = isHome && !scrolled && !menuOpen
@@ -64,42 +60,44 @@ export default function Navbar() {
         }}
       >
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: scrolled ? '64px' : '80px', transition: 'height 0.4s ease' }}>
-          {/* Logo */}
-          <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', flexShrink: 0 }}>
-            <div style={{
-              background: 'white',
-              padding: '8px 12px',
-              borderRadius: '12px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              boxShadow: scrolled ? 'none' : '0 4px 12px rgba(0,0,0,0.1)',
-              transition: 'all 0.3s ease',
-              border: scrolled ? 'none' : '1px solid rgba(255,255,255,0.2)'
-            }}>
-              <picture>
-                <source srcSet="/1.png" media="(max-width: 768px)" />
-                <img 
-                  src="/3.png" 
-                  alt="Sea of Desert" 
-                  style={{ 
-                    height: scrolled ? 40 : 48, 
-                    width: 'auto',
-                    maxWidth: 180,
-                    objectFit: 'contain',
-                    transition: 'all 0.3s ease',
-                  }} 
-                />
-              </picture>
-            </div>
-          </Link>
+          {/* Left Side Group (Logo + Navigation) */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'clamp(32px, 4vw, 64px)' }}>
+            {/* Logo */}
+            <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', flexShrink: 0 }}>
+              <div style={{
+                background: 'white',
+                padding: '8px 12px',
+                borderRadius: '12px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: scrolled ? 'none' : '0 4px 12px rgba(0,0,0,0.1)',
+                transition: 'all 0.3s ease',
+                border: scrolled ? 'none' : '1px solid rgba(255,255,255,0.2)'
+              }}>
+                <picture>
+                  <source srcSet="/1.png" media="(max-width: 768px)" />
+                  <img 
+                    src="/3.png" 
+                    alt="Sea of Desert" 
+                    style={{ 
+                      height: scrolled ? 40 : 48, 
+                      width: 'auto',
+                      maxWidth: 180,
+                      objectFit: 'contain',
+                      transition: 'all 0.3s ease',
+                    }} 
+                  />
+                </picture>
+              </div>
+            </Link>
 
-          {/* Desktop Links */}
-          <div className="desktop-links" style={{ display: 'none', alignItems: 'center', gap: 28 }}>
+            {/* Desktop Links */}
+            <div className="desktop-links" style={{ display: 'none', alignItems: 'center', gap: 28 }}>
             {links.map((link, i) => (
               <Link 
                 key={i} 
-                to={getTo(link.to)} 
+                to={link.to} 
                 style={{ 
                   color: isDarkBg ? 'rgba(255,255,255,0.85)' : 'var(--text-body)',
                   textDecoration: 'none',
@@ -114,6 +112,7 @@ export default function Navbar() {
                 {t(link.label)}
               </Link>
             ))}
+            </div>
           </div>
 
           {/* Actions */}
@@ -183,7 +182,7 @@ export default function Navbar() {
         {links.map((link, i) => (
           <Link 
             key={i} 
-            to={getTo(link.to)} 
+            to={link.to} 
             style={{ 
               color: 'var(--navy)',
               textDecoration: 'none',

@@ -64,7 +64,7 @@ export default function About() {
           <div className="about-story-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'center', marginBottom: 80 }}>
             <div>
               <img 
-                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80" 
+                src="/images/about.png" 
                 alt="Modern corporate building" 
                 style={{ width: '100%', borderRadius: 20, boxShadow: 'var(--shadow-md)' }}
               />
