@@ -23,7 +23,7 @@ export default function Footer() {
     ],
   }
 
-  const getHref = (to) => {
+  const getTo = (to) => {
     if (to.startsWith('#')) return `/${to}`
     return to
   }
@@ -148,11 +148,11 @@ export default function Footer() {
             </h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               {links.company.map((l, i) => (
-                <a key={i} href={getHref(l.to)} style={{ color: 'rgba(255,255,255,0.55)', textDecoration: 'none', fontSize: 14, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins', transition: 'color 0.2s' }}
+                <Link key={i} to={getTo(l.to)} style={{ color: 'rgba(255,255,255,0.55)', textDecoration: 'none', fontSize: 14, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins', transition: 'color 0.2s' }}
                   onMouseEnter={e => (e.currentTarget.style.color = 'var(--gold)')}
                   onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.55)')}>
                   {t(l.label)}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -181,9 +181,9 @@ export default function Footer() {
             <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: 13, lineHeight: 1.6, marginBottom: 20, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
               {t('contact_subtitle')}
             </p>
-            <a href="/#contact" className="btn-gold" style={{ fontSize: 14, padding: '10px 24px', fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
+            <Link to="/#contact" className="btn-gold" style={{ fontSize: 14, padding: '10px 24px', fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
               {t('btn_contact')}
-            </a>
+            </Link>
           </div>
         </div>
 

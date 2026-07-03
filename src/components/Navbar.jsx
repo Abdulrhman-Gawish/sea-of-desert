@@ -36,11 +36,9 @@ export default function Navbar() {
     { label: 'nav_contact', to: '#contact' },
   ]
 
-  // Some links are hashes on home, but if we are on a different page, they should navigate to /#hash
-  // The 'to' field defines it. But for contact, maybe it's everywhere? Let's just use /#contact for consistency
-  const getHref = (to) => {
-    if (to.startsWith('#')) return pathname === '/' ? to : `/${to}`
-    if (to.startsWith('/#')) return to
+  // Normalize hash-only links to always include leading slash for consistency
+  const getTo = (to) => {
+    if (to === '#contact') return '/#contact'
     return to
   }
 
@@ -99,9 +97,9 @@ export default function Navbar() {
           {/* Desktop Links */}
           <div className="desktop-links" style={{ display: 'none', alignItems: 'center', gap: 28 }}>
             {links.map((link, i) => (
-              <a 
+              <Link 
                 key={i} 
-                href={getHref(link.to)} 
+                to={getTo(link.to)} 
                 style={{ 
                   color: isDarkBg ? 'rgba(255,255,255,0.85)' : 'var(--text-body)',
                   textDecoration: 'none',
@@ -114,7 +112,7 @@ export default function Navbar() {
                 onMouseLeave={e => e.currentTarget.style.color = isDarkBg ? 'rgba(255,255,255,0.85)' : 'var(--text-body)'}
               >
                 {t(link.label)}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -183,9 +181,9 @@ export default function Navbar() {
         className="mobile-drawer"
       >
         {links.map((link, i) => (
-          <a 
+          <Link 
             key={i} 
-            href={getHref(link.to)} 
+            to={getTo(link.to)} 
             style={{ 
               color: 'var(--navy)',
               textDecoration: 'none',
@@ -196,15 +194,15 @@ export default function Navbar() {
             }}
           >
             {t(link.label)}
-          </a>
+          </Link>
         ))}
-        <a 
-          href="/#contact" 
+        <Link 
+          to="/#contact" 
           className="btn-primary" 
           style={{ justifyContent: 'center', marginTop: 16, fontSize: 14, padding: '12px 24px' }}
         >
           {t('btn_contact')}
-        </a>
+        </Link>
       </div>
 
       <style>{`
