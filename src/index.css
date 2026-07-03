@@ -259,80 +259,13 @@ body[dir='rtl'] {
 /* Columns fallback for non-responsive grids */
 .grid-cols-1 { grid-template-columns: 1fr; }
 .grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
-
-/* Premium Hero Redesign Additions */
-@keyframes fadeLeft {
-  from { opacity: 0; transform: translateX(30px); }
-  to { opacity: 1; transform: translateX(0); }
+/* Floating Stat Cards */
+.stat-card {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
-[dir='rtl'] .animate-fade-left {
-  animation: fadeLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-/* In LTR fade from right to left */
-@keyframes fadeRight {
-  from { opacity: 0; transform: translateX(-30px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-[dir='ltr'] .animate-fade-left {
-  animation: fadeRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes pulseSlow {
-  0%, 100% { opacity: 0.4; transform: scale(1); }
-  50% { opacity: 0.7; transform: scale(1.05); }
-}
-
-.animate-pulse-slow {
-  animation: pulseSlow 8s ease-in-out infinite;
-}
-
-@keyframes floatSubtle {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-}
-.animate-float-subtle {
-  animation: floatSubtle 7s ease-in-out infinite;
-}
-
-@keyframes scaleFadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-.animate-scale-fade {
-  animation: scaleFadeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-/* Watermark visibility control */
-.hero-watermark {
-  opacity: 0.03;
-  transform: scale(0.9);
-}
-
-@media (min-width: 1280px) {
-  .hero-watermark {
-    display: none;
-  }
-}
-
-/* Desktop Premium Utilities */
-.glass-premium {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 32px 80px rgba(10, 22, 40, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.8);
-}
-
-/* Feature Row Icons */
-.feature-icon-wrapper {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--gold);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+.stat-card:hover {
+  transform: translateY(-6px) scale(1.03) !important;
+  box-shadow: 0 32px 64px rgba(0,0,0,0.4), 0 0 32px rgba(201,162,39,0.2) !important;
+  border-color: rgba(201,162,39, 0.8) !important;
 }
 
