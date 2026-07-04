@@ -3,12 +3,12 @@ import { useLang } from '../context/LangContext'
 import { User } from 'lucide-react'
 
 const teamMembers = [
-  { nameKey: 'team_1_name', positionKey: 'team_1_position' },
-  { nameKey: 'team_2_name', positionKey: 'team_2_position' },
-  { nameKey: 'team_3_name', positionKey: 'team_3_position' },
+  { nameKey: 'team_1_name', positionKey: 'team_1_position', image: '/images/salem.png' },
+  { nameKey: 'team_2_name', positionKey: 'team_2_position', image: '/images/ali.png' },
+  { nameKey: 'team_3_name', positionKey: 'team_3_position', image: '/images/mohamed.png' },
 ]
 
-function TeamCard({ nameKey, positionKey, index }) {
+function TeamCard({ nameKey, positionKey, image, index }) {
   const { t, lang } = useLang()
 
   return (
@@ -22,7 +22,7 @@ function TeamCard({ nameKey, positionKey, index }) {
         animationDelay: `${index * 0.12}s`,
       }}
     >
-      {/* Image Placeholder */}
+      {/* Image or Placeholder */}
       <div style={{
         width: '100%',
         aspectRatio: '1 / 1',
@@ -33,23 +33,33 @@ function TeamCard({ nameKey, positionKey, index }) {
         position: 'relative',
         overflow: 'hidden',
       }}>
-        <div style={{
-          position: 'absolute',
-          inset: 0,
-          background: 'radial-gradient(circle at 30% 40%, rgba(26,79,160,0.04), transparent 60%)',
-        }} />
-        <div style={{
-          width: 80,
-          height: 80,
-          borderRadius: '50%',
-          background: 'rgba(26, 79, 160, 0.06)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: 'var(--gray-400)',
-        }}>
-          <User size={36} strokeWidth={1.5} />
-        </div>
+        {image ? (
+          <img 
+            src={image} 
+            alt={t(nameKey)} 
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+        ) : (
+          <>
+            <div style={{
+              position: 'absolute',
+              inset: 0,
+              background: 'radial-gradient(circle at 30% 40%, rgba(26,79,160,0.04), transparent 60%)',
+            }} />
+            <div style={{
+              width: 80,
+              height: 80,
+              borderRadius: '50%',
+              background: 'rgba(26, 79, 160, 0.06)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: 'var(--gray-400)',
+            }}>
+              <User size={36} strokeWidth={1.5} />
+            </div>
+          </>
+        )}
       </div>
 
       {/* Info */}
