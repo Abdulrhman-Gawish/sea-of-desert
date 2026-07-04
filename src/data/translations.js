@@ -313,6 +313,34 @@ export const translations = {
     ar: "بنية تحتية لتقنية المعلومات وحلول برمجية شاملة.",
   },
 
+  // AI Services
+  bs_ai_services_title: { en: "AI Services", ar: "خدمات الذكاء الاصطناعي" },
+
+  srv_ai_chat_title: { en: "AI Chatbots & Virtual Assistants", ar: "روبوتات الدردشة والمساعدين الافتراضيين" },
+  srv_ai_chat_features: {
+    en: ["Customer Support Bots", "Website AI Assistant", "WhatsApp AI Assistant"],
+    ar: ["روبوتات دعم العملاء", "مساعد الذكاء الاصطناعي للمواقع", "مساعد واتساب للذكاء الاصطناعي"]
+  },
+
+  srv_ai_auto_title: { en: "AI Business Automation", ar: "أتمتة الأعمال بالذكاء الاصطناعي" },
+  srv_ai_auto_features: {
+    en: ["Workflow Automation", "Intelligent Process Automation", "AI-powered Data Entry"],
+    ar: ["أتمتة سير العمل", "الأتمتة الذكية للعمليات", "إدخال البيانات بالذكاء الاصطناعي"]
+  },
+
+  srv_ai_data_title: { en: "AI Data Analytics", ar: "تحليلات البيانات بالذكاء الاصطناعي" },
+  srv_ai_data_features: {
+    en: ["Business Intelligence", "Automated Reporting", "Predictive Analytics"],
+    ar: ["ذكاء الأعمال", "التقارير المؤتمتة", "التحليلات التنبؤية"]
+  },
+
+  srv_ai_integ_title: { en: "AI Integration & Consulting", ar: "استشارات ودمج الذكاء الاصطناعي" },
+  srv_ai_integ_features: {
+    en: ["OpenAI Integration", "Gemini Integration", "Claude Integration", "Custom AI Solutions"],
+    ar: ["دمج OpenAI", "دمج Gemini", "دمج Claude", "حلول ذكاء اصطناعي مخصصة"]
+  },
+
+
   // Supply Chain Page
   sc_hero_title: { en: "Supply Chain & Trading", ar: "سلسلة التوريد والتجارة" },
   sc_hero_subtitle: {

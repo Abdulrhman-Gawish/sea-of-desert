@@ -1,7 +1,7 @@
 import { useLang } from '../context/LangContext'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import Contact from '../components/Contact'
-import { Monitor, Smartphone, Database, Megaphone, PenTool, Layout, Briefcase, Calculator, Users, Settings } from 'lucide-react'
+import { Monitor, Smartphone, Database, Megaphone, PenTool, Layout, Briefcase, Calculator, Users, Settings, Bot, Cpu, LineChart, Zap } from 'lucide-react'
 
 const services = [
   { id: 'srv_web', icon: <Monitor size={22} /> },
@@ -14,6 +14,13 @@ const services = [
   { id: 'srv_accounting', icon: <Calculator size={22} /> },
   { id: 'srv_admin', icon: <Users size={22} /> },
   { id: 'srv_tech', icon: <Settings size={22} /> },
+]
+
+const aiServices = [
+  { id: 'srv_ai_chat', icon: <Bot size={22} /> },
+  { id: 'srv_ai_auto', icon: <Cpu size={22} /> },
+  { id: 'srv_ai_data', icon: <LineChart size={22} /> },
+  { id: 'srv_ai_integ', icon: <Zap size={22} /> },
 ]
 
 export default function BusinessSolutionsPage() {
@@ -81,6 +88,48 @@ export default function BusinessSolutionsPage() {
                   <p style={{ color: 'var(--gray-600)', fontSize: 14, lineHeight: 1.65, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
                     {t(`${s.id}_desc`)}
                   </p>
+                </div>
+              ))}
+            </div>
+
+            {/* AI Services */}
+            <h3 className="section-title text-center" style={{ marginBottom: 48, marginTop: 80 }}>
+              {t('bs_ai_services_title')}
+            </h3>
+            
+            <div className="bs-services-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20 }}>
+              {aiServices.map((s, i) => (
+                <div key={`ai-${i}`} className="card-hover" style={{
+                  padding: 28,
+                  borderRadius: 20,
+                  border: '1px solid var(--gray-100)',
+                  boxShadow: 'var(--shadow-sm)',
+                  background: 'white',
+                }}>
+                  <div style={{
+                    width: 48,
+                    height: 48,
+                    borderRadius: 14,
+                    background: 'rgba(26, 79, 160, 0.07)',
+                    color: 'var(--royal)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginBottom: 18
+                  }}>
+                    {s.icon}
+                  </div>
+                  <h3 style={{ fontSize: 17, fontWeight: 700, color: 'var(--navy)', marginBottom: 12, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>
+                    {t(`${s.id}_title`)}
+                  </h3>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    {Array.isArray(t(`${s.id}_features`)) && t(`${s.id}_features`).map((feature, index) => (
+                      <div key={index} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <div style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--royal)', flexShrink: 0 }} />
+                        <span style={{ color: 'var(--gray-600)', fontSize: 14, fontFamily: lang === 'ar' ? 'Cairo' : 'Poppins' }}>{feature}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
